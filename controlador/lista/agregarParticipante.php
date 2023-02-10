@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //verificar que existen datos en las variales enviadas
     if (
         isset($_POST['nombres'])  && isset($_POST['direccion'])  && isset($_POST['fecha_nacimiento'])
-       
     ) {
         
 
@@ -14,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         //construir la consulta
         $query = "INSERT INTO participante(nombres, direccion , fecha_nacimiento , fecha_aceptacioncristo,fecha_bautizo,discipulado, 
-         parentezco, nombres_personaiglesia ,nombres_representante,contacto_representante,alergia,detalle_alergia,medicamento,
-         detalle_medicamento,problema_salud,detalle_problemasalud,situacion_emocional ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        parentezco, nombres_personaiglesia ,nombres_representante,contacto_representante,alergia,detalle_alergia,medicamento,
+        detalle_medicamento,problema_salud,detalle_problemasalud,situacion_emocional, foto ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         //preparar la consulta
         if ($stmt = $conn->prepare($query)) {
@@ -37,9 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $POST['detalle_medicamento'],
                 $POST['problema_salud'],
                 $POST['detalle_problemasalud'],
-                $POST['situacion_emocional']
-              
-        
+                $POST['situacion_emocional'],
+                $POST['foto']
             );
 
             //Ejecutar statement
