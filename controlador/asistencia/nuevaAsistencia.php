@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $consulta = $conn->query ("INSERT INTO asistencia(id_participante, devocional , fecha_asistencia, asiste ) VALUES ($id_participante,$devocional,'$fecha_asistencia',$asiste)");
 
         //Redireccionar
-        header('location: ../../vista/asistencia/leerAsistencia.php');
+      
 
     }else{
         echo "No se estan llenando todos los datos";
