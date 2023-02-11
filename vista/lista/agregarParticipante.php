@@ -15,6 +15,31 @@ require_once '../../controlador/lista/agregarParticipante.php';
     <title>Nuevo usuario</title>
 </head>
 <body>
+<div>
+        <nav class="navbar navbar-expand navbar-dark" id="navbar">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <img src="../../img/Logo.png" alt="" width="100" height="50">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active; text-white; fs-5" aria-current="page" href="leerParticipante.php" id="menu">Lista</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active; text-white; fs-5" aria-current="page" href="../Asistencia/leerAsistencia.php" id="menu">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active; text-white; fs-5" href="../Asistencia/nuevaAsistencia.php" id="menu">Asistencias</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills">
+                        <li class="nav-item dropdown; position-absolute top-0 end-0" id="botonBien">
+                                <a class="nav-link dropdown-toggle; fs-5" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" id="menu">Bienvenido</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
     <div class="container">
         <div class="title">Agregar un adolescente</div>
         <div class="content">
