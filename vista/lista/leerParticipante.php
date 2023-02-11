@@ -10,6 +10,7 @@ require_once '../../controlador/verlista.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/formularios.css">
     <title>Document</title>
         <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"   crossorigin="anonymous">
@@ -33,9 +34,6 @@ require_once '../../controlador/verlista.php';
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active; text-white; fs-5" href="../Asistencia/nuevaAsistencia.php" id="menu">Asistencias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active; text-white; fs-5" href="autoAdmin.php" id="menu">Formularios</a>
                         </li>
                     </ul>
                     <ul class="nav nav-pills">

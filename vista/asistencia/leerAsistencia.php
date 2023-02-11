@@ -11,13 +11,13 @@ require_once '../../controlador/verAsistencia.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/formularios.css">
     <title>Document</title>
         <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"   crossorigin="anonymous">
     <title>Lista Asistencia</title>
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
- 
     
 </head>
 <body>
@@ -35,9 +35,6 @@ require_once '../../controlador/verAsistencia.php';
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active; text-white; fs-5" href="nuevaAsistencia.php" id="menu">Asistencias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active; text-white; fs-5" href="autoAdmin.php" id="menu">Formularios</a>
                         </li>
                     </ul>
                     <ul class="nav nav-pills">
@@ -58,14 +55,10 @@ require_once '../../controlador/verAsistencia.php';
         <table class="table table-striped">
             <thead class="text-light" id="tabla">
             <tr>
-               
-             
                 <th scope="col">Nombres</th>
                 <th scope="col">Devocional</th>
                 <th scope="col">Fecha </th>
                 <th scope="col">Asistió</th>
-                <!-- <th scope="col">Foto</th>// -->
-                
             </tr>
             </thead>
             <tbody>
@@ -75,23 +68,18 @@ require_once '../../controlador/verAsistencia.php';
                             if ($row['devocional'] ==1){
                                 $dev= "Si";
                             }else{
-                               $dev = "No";
+                                $dev = "No";
                             }
                             if ($row['asiste'] ==1){
                                 $asi= "Si";
                             }else{
-                               $asi = "No";
+                                $asi = "No";
                             }
                         echo '<tr>';
-                        
-                
-
-                        echo '<td>' . $row['nombres'] .'</td>';
+                        echo '<td>'. $row['nombres'] .'</td>';
                         echo '<td>'.$dev  . '</td>';
-                        echo '<td>' . $row['fecha_asistencia'] . '</td>';
-                        echo '<td>' . $asi. '</td>';
-                        echo '<td>';
-                       
+                        echo '<td>'. $row['fecha_asistencia'] . '</td>';
+                        echo '<td>'. $asi. '</td>';
                         echo '</td>';
                         echo '</tr>';
                         }

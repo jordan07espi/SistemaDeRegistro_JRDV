@@ -1,7 +1,7 @@
 <?php
-    define('SERVERNAME','localhost:3308');
+    define('SERVERNAME','localhost');
     define('USERNAME','root');
-    define('PASSWORD','admin');
+    define('PASSWORD','');
     define('DBNAME','sistema_jrdv');
     
     //Creación de la conexión a la base de datos usando mysqli
