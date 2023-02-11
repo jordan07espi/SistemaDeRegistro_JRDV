@@ -1,61 +1,59 @@
-<?php
-require_once '../../modelo/conexion.php';
+<?php 
+//Verificar si los canpos son enviados
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $for_update = array_filter($_POST,function($k){
+        return $k!=='Agregar';
+        },ARRAY_FILTER_USE_KEY);
 
-//verificar si los datos fueron enviados por el método post
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //verificar que existen datos en las variales enviadas
-    if (
-        isset($_POST['nombres'])  && isset($_POST['direccion'])  && isset($_POST['fecha_nacimiento'])
-    ) {
-        
+    //Revisar imagen
+    $revisar = getimagesize($_FILES["foto"]["tmp_name"]);
+    if($revisar !== false){
+        $image = $_FILES['foto']['tmp_name'];
+        $foto = addslashes(file_get_contents($image));
 
- 
-    
-        //construir la consulta
-        $query = "INSERT INTO participante(nombres, direccion , fecha_nacimiento , fecha_aceptacioncristo,fecha_bautizo,discipulado, 
-        parentezco, nombres_personaiglesia ,nombres_representante,contacto_representante,alergia,detalle_alergia,medicamento,
-        detalle_medicamento,problema_salud,detalle_problemasalud,situacion_emocional, foto ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        //Conexion a la base de datos
+        include_once('../../modelo/conexion.php');             
 
-        //preparar la consulta
-        if ($stmt = $conn->prepare($query)) {
-            $stmt->bind_param(
-                'sssssssssssssssss',
-                $POST['nombres'],
-                $POST['direccion'],
-                $POST['fecha_nacimiento'],
-                $POST['fecha_aceptacioncristo'],
-                $POST['fecha_bautizo'],
-                $POST['discipulado'],
-                $POST['parentezco'],
-                $POST['nombres_personaiglesia'],
-                $POST['nombres_representante'],
-                $POST['contacto_representante'],
-                $POST['alergia'], 
-                $POST['detalle_alergia'],
-                $POST['medicamento'],
-                $POST['detalle_medicamento'],
-                $POST['problema_salud'],
-                $POST['detalle_problemasalud'],
-                $POST['situacion_emocional'],
-                $POST['foto']
-            );
+        //Verificar si los datos de las variables estan enviadas
+        if(isset($_POST['nombres'])  && isset($_POST['direccion'])  && isset($_POST['fecha_nacimiento'])) {
 
-            //Ejecutar statement
-            if ($stmt->execute()) {
-                header('location: ../../vista/lista/leerParticipante.php');
-                exit();
-            } else {
-                echo "Error! El statement no se ejecutó";
-            }
-            $stmt->close();
-        } else {
-            echo "Error en la preparación del statement";
+            //Variables
+            $nombres= $_POST['nombres'];
+            $direccion= $_POST['direccion'];
+            $fecha_nacimiento= $_POST['fecha_nacimiento'];
+            $fecha_aceptacioncristo= $_POST['fecha_aceptacioncristo'];
+            $fecha_bautizo= $_POST['fecha_bautizo'];
+            $discipulado= $_POST['discipulado'];
+            $parentezco= $_POST['parentezco'];
+            $nombres_personaiglesia= $_POST['nombres_personaiglesia'];
+            $nombres_representante= $_POST['nombres_representante'];
+            $contacto_representante= $_POST['contacto_representante'];   
+            $alergia= $_POST['alergia']; 
+            $detalle_alergia= $_POST['detalle_alergia']; 
+            $medicamento= $_POST['medicamento']; 
+            $detalle_medicamento=$_POST['detalle_medicamento'];
+            $problema_salud=$_POST['problema_salud'];
+            $detalle_problemasalud= $_POST['detalle_problemasalud'];
+            $situacion_emocional= $_POST['situacion_emocional'];
+           
+            //Contruir la consulta
+            $consulta = $conn->query("INSERT INTO participante(nombres, direccion , fecha_nacimiento , fecha_aceptacioncristo,fecha_bautizo,discipulado, 
+            parentezco, nombres_personaiglesia ,nombres_representante,contacto_representante,alergia,detalle_alergia,medicamento,
+            detalle_medicamento,problema_salud,detalle_problemasalud,situacion_emocional, foto )
+            VALUES ('$nombres', '$direccion', ' $fecha_nacimiento', '$fecha_aceptacioncristo', '$fecha_bautizo',  $discipulado,'$parentezco','$nombres_personaiglesia',
+            '$nombres_representante', '$contacto_representante',$alergia,'$detalle_alergia',$medicamento,'$detalle_medicamento',$problema_salud,'$detalle_problemasalud',
+            '$situacion_emocional','$foto ')");
+
+            //Redireccionar
+            header('location: ../../vista/lista/leerParticipante.php');
+
+        }else{
+            echo "No se estan llenando todos los datos";
         }
-    } else {
-        echo "No se están llenando todos los datos";
+        $conn -> close();
+    }else{
+        //echo "no llenaron los datos por el metodo POST";
     }
-}/*else{
-    echo "No llegaron los datos del método POST";
-}*/
+}
 
 ?>

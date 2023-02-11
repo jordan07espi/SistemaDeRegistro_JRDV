@@ -3,6 +3,7 @@ require_once '../../modelo/conexion.php';
 //Leer los datos y visualizarlos en los cuadros de texto para su edicion
 
 if(isset($_GET['id'])&& !empty(trim($_GET['id']))){
+    $id = $_GET['id'];
     $query='SELECT * FROM participante WHERE id_participante=?';
     if($stmt=$conn-> prepare($query)){
         $stmt-> bind_param('i', $_GET['id']);
@@ -27,6 +28,7 @@ if(isset($_GET['id'])&& !empty(trim($_GET['id']))){
                 $problema_salud= $row['problema_salud'];
                 $detalle_problemasalud= $row['detalle_problemasalud'];
                 $situacion_emocional= $row['situacion_emocional'];
+                $foto = $row['foto'];
                
             }else {
                 echo 'Error, no existen resultados para esta consulta';
@@ -49,59 +51,59 @@ if(isset($_GET['id'])&& !empty(trim($_GET['id']))){
     exit();
 }
 
+$path_location ='';
 //Tomar los datos editados y actualizarlos en la base  
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-//verificar si los datos fueron enviados por el método post
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //verificar que existen datos en las variales enviadas
-    if (
-        isset($_POST['nombres']) && isset($_POST['direccion']) && isset($_POST['fecha_nacimiento']) 
-    ) {
-       
-    
-        $query = "UPDATE participante set nombres=?, direccion=?,fecha_nacimiento=?,fecha_aceptacioncristo=?,
-        fecha_bautizo=?,discipulado=?,parentezco=?,nombres_personaiglesia=?,nombres_representante=?,contacto_representante
-        , alergia=?, detalle_alergia=?,medicamento=?,detalle_medicamento=?, problema_salud=?, detalle_problemasalud=?,situacion_emocional=?
-         WHERE id_participante=?";
 
-        //preparar la consulta
-        if ($stmt = $conn->prepare($query)) {
-            $stmt->bind_param(
-                'sssssssssssssssssi',
-                $POST['nombres'],
-                $POST['direccion'],
-                $POST['fecha_nacimiento'],
-                $POST['fecha_aceptacioncristo'],
-                $POST['fecha_bautizo'],
-                $POST['discipulado'],
-                $POST['parentezco'],
-                $POST['nombres_personaiglesia'],
-                $POST['nombres_representante'],
-                $POST['contacto_representante'],
-                $POST['alergia'], 
-                $POST['detalle_alergia'],
-                $POST['medicamento'],
-                $POST['detalle_medicamento'],
-                $POST['problema_salud'],
-                $POST['detalle_problemasalud'],
-                $POST['situacion_emocional'],
+    //Revisar imagen
+    $revisar = getimagesize($_FILES["foto"]["tmp_name"]);
+    if($revisar !== false){
+        $image = $_FILES['foto']['tmp_name'];
+        $foto = addslashes(file_get_contents($image));
 
-                $_GET['id']
-            );
+            
 
-            //Ejecutar statement
-            if ($stmt->execute()) {
-                header('location:  ../../vista/lista/leerParticipante.php');
-                exit();
-            } else {
-                echo "Error! El statement no se ejecutó";
-            }
-            $stmt->close();
-        } else {
-            echo "Error en la preparación del statement";
+        //Verificar si los datos de las variables estan enviadas
+        if(isset($_POST['nombres'])  && isset($_POST['direccion'])  && isset($_POST['fecha_nacimiento'])) {
+
+            //Variables
+            $nombres= $_POST['nombres'];
+            $direccion= $_POST['direccion'];
+            $fecha_nacimiento= $_POST['fecha_nacimiento'];
+            $fecha_aceptacioncristo= $_POST['fecha_aceptacioncristo'];
+            $fecha_bautizo= $_POST['fecha_bautizo'];
+            $discipulado= $_POST['discipulado'];
+            $parentezco= $_POST['parentezco'];
+            $nombres_personaiglesia= $_POST['nombres_personaiglesia'];
+            $nombres_representante= $_POST['nombres_representante'];
+            $contacto_representante= $_POST['contacto_representante'];   
+            $alergia= $_POST['alergia']; 
+            $detalle_alergia= $_POST['detalle_alergia']; 
+            $medicamento= $_POST['medicamento']; 
+            $detalle_medicamento=$_POST['detalle_medicamento'];
+            $problema_salud=$_POST['problema_salud'];
+            $detalle_problemasalud= $_POST['detalle_problemasalud'];
+            $situacion_emocional= $_POST['situacion_emocional'];
+           
+             //Contruir la consulta
+             $query_update = "UPDATE participante SET nombres='$nombres',direccion='$direccion',fecha_nacimiento='$fecha_nacimiento',fecha_aceptacioncristo='$fecha_aceptacioncristo',
+             fecha_bautizo='$fecha_bautizo', discipulado=$discipulado, parentezco='$parentezco',nombres_personaiglesia='$nombres_personaiglesia',nombres_representante='$nombres_representante',
+             contacto_representante='$contacto_representante',alergia=$alergia, detalle_alergia='$detalle_alergia', medicamento=$medicamento, detalle_medicamento='$detalle_medicamento',problema_salud=$problema_salud,
+             detalle_problemasalud='$detalle_problemasalud',situacion_emocional='$situacion_emocional',
+             foto= '$foto' WHERE id_participante='$id'";
+ 
+              $conn->query($query_update); 
+
+            //Redireccionar
+            header('location: ../../vista/lista/leerParticipante.php');
+
+        }else{
+            echo "No se estan llenando todos los datos";
         }
-    } else {
-        echo "No se están llenando todos los datos";
+        $conn -> close();
+    }else{
+        //echo "no llenaron los datos por el metodo POST";
     }
 }
 

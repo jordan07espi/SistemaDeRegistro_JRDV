@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    
 if(isset($_GET['id'])&& !empty(trim($_GET['id']))){
     require_once '../../modelo/conexion.php';
     $query='DELETE FROM participante WHERE id_participante=?';

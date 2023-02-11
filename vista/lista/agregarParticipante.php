@@ -57,6 +57,10 @@ require_once '../../controlador/lista/agregarParticipante.php';
                         <input type="text" name="nombres_representante" required>
                     </div>
                     <div class="input-box">
+                        <span for="">Contacto Representante</span>
+                        <input type="text" name="contacto_representante" required>
+                    </div>
+                    <div class="input-box">
                         <span for="">Alergia</span>
                         <select name="alergia"> <option value="1"> Si</option><option value="0"> No</option></select>
                     </div>
@@ -74,7 +78,8 @@ require_once '../../controlador/lista/agregarParticipante.php';
                     </div>
                     <div class="input-box">
                         <span for="">Problema de salud</span>
-                        <input type="text" name="problema_sallud">
+                        <select name="problema_salud"> <option value="1"> Si</option><option value="0"> No</option></select>
+                    </div>
                     </div>
                     <div class="input-box">
                         <span for="">Detalle del problema</span>

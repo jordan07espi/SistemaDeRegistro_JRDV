@@ -26,13 +26,13 @@ require_once '../../controlador/verlista.php';
                     <img src="../../img/Logo.png" alt="" width="100" height="50">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link active; text-white; fs-5" aria-current="page" href="leeParticipante.php" id="menu">Lista</a>
+                            <a class="nav-link active; text-white; fs-5" aria-current="page" href="leerParticipante.php" id="menu">Lista</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active; text-white; fs-5" aria-current="page" href="leerAsistencia.php" id="menu">Registro</a>
+                            <a class="nav-link active; text-white; fs-5" aria-current="page" href="../Asistencia/leerAsistencia.php" id="menu">Registro</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active; text-white; fs-5" href="nuevoAsistencia.php" id="menu">Asistencias</a>
+                            <a class="nav-link active; text-white; fs-5" href="../Asistencia/nuevaAsistencia.php" id="menu">Asistencias</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active; text-white; fs-5" href="autoAdmin.php" id="menu">Formularios</a>
@@ -76,12 +76,12 @@ require_once '../../controlador/verlista.php';
                         echo '<td>' . $row['contacto_representante'] . '</td>';
                         echo '<td>' . $row['nombres_representante'] . '</td>';
                         echo '<td>';
-                        echo '<a href="leerParticipante.php?id=' . $row['id_participante'] . '"> 
+                        echo '<a href="editarParticipante.php?id=' . $row['id_participante'] . '"> 
                         <button type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square" ></i>
                         </button>
                         </a>';
-                        echo '<a href="#?id=' . $row['id_participante'] . '"> 
+                        echo '<a href="../../controlador/lista/eliminarParticipante.php?id=' . $row['id_participante'] . '"> 
                         <button type="button" class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
                         </button>
