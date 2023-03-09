@@ -126,7 +126,7 @@ require_once '../../controlador/lista/editarParticipante.php';
                     <div class="buton">
                         <input type="submit" value="Guardar Cambios">
                     </div>
-                    <a href="leerParticipante.php">Cancelar</a>  
+                    <a href="leerParticipante.php"class="stretched-link text-danger" style="position: relative;">Cancelar</a>  
                 </div>
             </form>
         </div>

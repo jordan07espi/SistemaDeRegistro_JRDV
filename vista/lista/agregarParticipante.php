@@ -125,7 +125,7 @@ require_once '../../controlador/lista/agregarParticipante.php';
                         <div class="buton">
                             <input type="submit" value="Agregar">
                         </div>
-                            <a href="leerParticipante.php">Cancelar</a>  
+                            <a href="leerParticipante.php" class="stretched-link text-danger" style="position: relative;">Cancelar</a>  
                         </div>
                     </div>
                 </form>

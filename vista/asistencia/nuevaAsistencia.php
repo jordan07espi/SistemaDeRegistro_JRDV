@@ -86,7 +86,7 @@ require_once '../../controlador/asistencia/nuevaAsistencia.php';
                     ?>
                 </tbody>
             </table>
-                <a href="leerAsistencia.php">Cancelar</a>  
+                <a href="leerAsistencia.php"class="stretched-link text-danger" style="position: relative;">Cancelar</a>  
         </div>
 </body>
 </html>
