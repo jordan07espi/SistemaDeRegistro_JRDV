@@ -18,7 +18,7 @@ require_once '../../controlador/asistencia/nuevaAsistencia.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"   crossorigin="anonymous">
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>Nuevo usuario</title>
+    <title>Asistencias</title>
 </head>
 <body>
     <div>
@@ -46,7 +46,7 @@ require_once '../../controlador/asistencia/nuevaAsistencia.php';
             </div>
         </nav>
     </div>
-        <h5 class="titulo">Registrar de Asistencias</h5>
+        <h5 class="titulo">Registrar Asistencia</h5>
         <div id="bordeTable">
             <table class="table table-striped">
                 <thead class="text-light" id="tabla">

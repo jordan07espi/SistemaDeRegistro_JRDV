@@ -49,86 +49,87 @@ require_once '../../controlador/lista/agregarParticipante.php';
         <div class="title">Registrar nuevo adolescente</div>
             <div class="content">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
-                <div class="user-details">
-                    <div class="input-box">
-                        <span class="details" for="">Nombre</span>
-                        <input type="text" name="nombres" required class="form-control">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details" for="">Nombre</span>
+                            <input type="text" name="nombres" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Direccion</span>
+                            <input type="text" name="direccion" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Fecha nacimiento</span>
+                            <input type="date" name="fecha_nacimiento" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Fecha que acepto a Cristo</span>
+                            <input type="date" name="fecha_aceptacioncristo" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Fecha de Bautizo</span>
+                            <input type="date" name="fecha_bautizo" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Discipulado</span>
+                            <select name="discipulado"> <option value="1"> Si</option><option value="0"> No</option></select>
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Parentezco con quien asiste</span>
+                            <input type="text" name="parentezco" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Persona con la que asiste a la iglesia</span>
+                            <input type="text" name="nombres_personaiglesia" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Representante</span>
+                            <input type="text" name="nombres_representante" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span for="" class="details">Contacto Representante</span>
+                            <input type="text" name="contacto_representante" required class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span for="">Alergia</span>
+                            <select name="alergia"> <option value="1"> Si</option><option value="0"> No</option></select>
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Detalle de la alergia</span>
+                            <input type="text" name="detalle_alergia" class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Medicameto</span>
+                            <select name="medicamento"> <option value="1"> Si</option><option value="0"> No</option></select>
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Detalle del medicamneto</span>
+                            <input type="text" name="detalle_medicamento" class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Problema de salud</span>
+                            <select name="problema_salud"> <option value="1"> Si</option><option value="0"> No</option></select>
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Detalle del problema</span>
+                            <input type="text" name="detalle_problemasalud" class="form-control">
+                        </div>
+                        <div class="input-box">
+                            <span class="details" for="">Situacion emocional</span>
+                            <input type="text" name="situacion_emocional" class="form-control">
+                        </div>
+                        <div class="input-box"">
+                            <span class="details" for="">Foto</span>
+                            <input class="form-control" type="file" id="formFile" name="foto" >
+                        </div>
+                        <div class="buton">
+                            <input type="submit" value="Agregar">
+                        </div>
+                            <a href="leerParticipante.php">Cancelar</a>  
+                        </div>
                     </div>
-                    <div class="input-box">
-                        <span class="details" for="">Direccion</span>
-                        <input type="text" name="direccion" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Fecha nacimiento</span>
-                        <input type="date" name="fecha_nacimiento" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Fecha que acepto a Cristo</span>
-                        <input type="date" name="fecha_aceptacioncristo" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Fecha de Bautizo</span>
-                        <input type="date" name="fecha_bautizo" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Discipulado</span>
-                        <select name="discipulado"> <option value="1"> Si</option><option value="0"> No</option></select>
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Parentezco con quien asiste</span>
-                        <input type="text" name="parentezco" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Persona con la que asiste a la iglesia</span>
-                        <input type="text" name="nombres_personaiglesia" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Representante</span>
-                        <input type="text" name="nombres_representante" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span for="">Contacto Representante</span>
-                        <input type="text" name="contacto_representante" required class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span for="">Alergia</span>
-                        <select name="alergia"> <option value="1"> Si</option><option value="0"> No</option></select>
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Detalle de la alergia</span>
-                        <input type="text" name="detalle_alergia" class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Medicameto</span>
-                        <select name="medicamento"> <option value="1"> Si</option><option value="0"> No</option></select>
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Detalle del medicamneto</span>
-                        <input type="text" name="detalle_medicamento" class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Problema de salud</span>
-                        <select name="problema_salud"> <option value="1"> Si</option><option value="0"> No</option></select>
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Detalle del problema</span>
-                        <input type="text" name="detalle_problemasalud" class="form-control">
-                    </div>
-                    <div class="input-box">
-                        <span class="details" for="">Situacion emocional</span>
-                        <input type="text" name="situacion_emocional" class="form-control">
-                    </div>
-                    <div class="input-box"">
-                        <span class="details" for="">Foto</span>
-                        <input class="form-control" type="file" id="formFile" name="foto" >
-                    </div>
-                    <div class="buton">
-                        <input type="submit" value="Agregar">
-                    </div>
-                        <a href="leerParticipante.php">Cancelar</a>  
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </body>
